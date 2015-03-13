@@ -142,7 +142,7 @@ function getEvents()
             totalPaid++;
             paymentList.append("<li class='paid'><h3>"+data[i].name+" - $0</h3></li>");
           }else{
-            paymentList.append("<li class='unpaid'><h3>"+data[i].name+" - $"+eachOwed+"</h3></li>");
+            paymentList.append("<li class='unpaid'><h3>"+data[i].name+"</h3></li>");
           }
         };
         console.log("total paid=" + totalPaid + " out of " + totalAtendees);

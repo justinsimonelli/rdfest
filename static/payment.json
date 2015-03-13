@@ -5,23 +5,19 @@
 	},
 	{
 		"name" : "Staci",
-		"status" : "paid"
-	},
-	{
-		"name" : "Halie",
 		"status" : "unpaid"
 	},
 	{
-		"name" : "Brandon",
+		"name" : "Jess",
 		"status" : "unpaid"
 	},
 	{
 		"name" : "Neil",
-		"status" : "unpaid"
+		"status" : "paid"
 	},
 	{
 		"name" : "Lex",
-		"status" : "paid"
+		"status" : "unpaid"
 	},
 	{
 		"name" : "Chris",
@@ -30,10 +26,6 @@
 	{
 		"name" : "Bets",
 		"status" : "paid"
-	},
-	{
-		"name" : "Durante",
-		"status" : "unpaid"
 	},
 	{
 		"name" : "AJ",
@@ -52,10 +44,6 @@
 		"status" : "paid"
 	},
 	{
-		"name" : "Denny",
-		"status" : "unpaid"
-	},
-	{
 		"name" : "Julio",
 		"status" : "paid"
 	},
@@ -65,6 +53,18 @@
 	},
 	{
 		"name" : "Katie",
+		"status" : "unpaid"
+	},
+	{
+		"name" : "Justus",
+		"status" : "paid"
+	},
+	{
+		"name" : "Tina",
+		"status" : "paid"
+	},
+	{
+		"name" : "Amanda",
 		"status" : "unpaid"
 	}
 ]
