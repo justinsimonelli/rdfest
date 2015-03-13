@@ -16,4 +16,4 @@ def thanks():
 
 @app.route("/test/")
 def test():
-    return "it works, test!"
+    return "it works, test! holy shit!"
