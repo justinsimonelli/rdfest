@@ -29,19 +29,19 @@
 	},
 	{
 		"name" : "AJ",
-		"status" : "paid"
+		"status" : "unpaid"
 	},
 	{
 		"name" : "Heather",
-		"status" : "paid"
+		"status" : "unpaid"
 	},
 	{
 		"name" : "Lisa",
-		"status" : "paid"
+		"status" : "unpaid"
 	},
 	{
 		"name" : "Denny",
-		"status" : "paid"
+		"status" : "unpaid"
 	},
 	{
 		"name" : "Julio",
@@ -49,7 +49,7 @@
 	},
 	{
 		"name" : "Keith",
-		"status" : "paid"
+		"status" : "unpaid"
 	},
 	{
 		"name" : "Katie",

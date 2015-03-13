@@ -140,7 +140,7 @@ function getEvents()
               pctPaid = 0;
           if(attendee.status == "paid"){
             totalPaid++;
-            paymentList.append("<li class='paid'><h3>"+data[i].name+" - $0</h3></li>");
+            paymentList.append("<li class='paid'><h3>"+data[i].name+"</h3></li>");
           }else{
             paymentList.append("<li class='unpaid'><h3>"+data[i].name+"</h3></li>");
           }
