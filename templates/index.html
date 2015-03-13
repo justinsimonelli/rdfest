@@ -15,6 +15,11 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script>
+      $('#payme').on('submit', function () {
+        var $btn = $(this).button('loading');
+      })
+    </script>
     <style type="text/css">
       html,body{
         height: 100%;
@@ -66,7 +71,7 @@
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="AY98ZF2MG6XBC">
-            <button style="font-size:125px;" class="btn btn-success btn-lg" type="submit">PAY ME!</button>
+            <button style="font-size:125px;" class="btn btn-success btn-lg" type="submit" id="payme" data-loading-text="Loading...">PAY ME!</button>
             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
           </form>
         </div>
