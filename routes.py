@@ -15,5 +15,5 @@ def thanks():
     return render_template("thanks.html")
 
 @app.route("/test/")
-def thanks():
+def test():
     return "it works, test!"
