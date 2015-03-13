@@ -1,0 +1,7 @@
+# Virtualenv
+.Python
+bin
+lib
+include
+.idea
+*.pyc

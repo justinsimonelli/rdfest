@@ -1,0 +1,16 @@
+.jumbotron{
+	min-height: 500px;
+}
+
+#positioner{
+	position: absolute;
+}
+
+
+#attendee-list > li.paid{
+	color: green;
+}
+
+#attendee-list > li.unpaid{
+	color: red;
+}
