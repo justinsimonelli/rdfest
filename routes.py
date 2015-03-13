@@ -13,3 +13,7 @@ def payment():
 @app.route("/thanks/")
 def thanks():
     return render_template("thanks.html")
+
+@app.route("/test/")
+def thanks():
+    return "it works, test!"
