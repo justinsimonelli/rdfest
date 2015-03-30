@@ -57,28 +57,13 @@
         #deposit,#full{display:none;}
 
     </style>
- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
-  $(function() {
-    $( "#dialog-confirm" ).dialog( {
-      resizable: false,
-      height:140,
-      modal: true,
-      buttons: {
-        "Yes": function() {
-          $( this ).dialog( "close" );
-          $("#full").show();
-        },
-        No: function() {
-          $( this ).dialog( "close" );
-          $("#deposit").show();
-        }
-      }
+    $(document).ready(function(){
+        $("#confirmer #hasPaidDeposit").click(function(){ $("#confirmer").hide(); $("#full").show(); });
+        $("#confirmer #noDeposit").click(function(){ $("#confirmer").hide(); $("#deposit").show(); });
     });
-  });
+
 
   </script>
 
@@ -94,6 +79,11 @@
 
     <div class="jumbotron">
         <div class="container center">
+            <div id="confirmer">
+                <h1>Have you paid the security deposit?</h1>
+                <button style="font-size:85px;" class="btn btn-success btn-lg" type="submit" id="hasPaidDeposit">Yes</button>
+                <button style="font-size:85px;" class="btn btn-success btn-lg" type="submit" id="noDeposit">No</button>
+            </div>
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="deposit">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="AY98ZF2MG6XBC">
@@ -109,8 +99,5 @@
           </form>
         </div>
     </div>
-<div id="dialog-confirm" title="Paid?">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Have you paid the deposit?</p>
-</div>
   </body>
 </html>
