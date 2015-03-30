@@ -14,3 +14,7 @@
 #attendee-list > li.unpaid{
 	color: red;
 }
+
+#attendee-list > li.deposit{
+	color: #cccc00;
+}
