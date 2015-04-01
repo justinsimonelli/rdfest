@@ -78,3 +78,6 @@ def user_query( query, one=False ):
             'date_inserted': row[3]
         }
     return rows
+
+if __name__ == "__main__":
+    app.run(debug=True)

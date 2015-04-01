@@ -20,34 +20,43 @@
 <body>
 
 <script type="text/javascript">
+(function($) {
+$.fn.serializeFormJSON = function() {
+
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
+})(jQuery);
+
   $(document).ready(function(){
-    var totalDue=400,
-        amtDueText = $("#amtDue").text();
+    $("#updater").submit(function(){
+        var url = $(this).attr('action'),
+            json = $(this).serializeFormJSON();
+        console.log(json);
 
-    $.getJSON( "/static/payment.json",function(data){
-        var totalAtendees= data.length,
-            totalPaid = 0,
-            paymentList = $("#attendee-list"),
-            eachOwed = (Math.ceil(totalDue / totalAtendees));
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            url: url,
+            data: JSON.stringify(json),
+            success: function(data){
+                console.log("success");
+            }
+        });
 
-        for (var i = 0; i < totalAtendees; i++) {
-          var attendee = data[i],
-              pctPaid = 0;
-          if(attendee.status == "paid"){
-            totalPaid++;
-            paymentList.append("<li class='paid'><h3>"+data[i].name+"</h3></li>");
-          }else if(attendee.status == "deposit"){
-            paymentList.append("<li class='deposit'><h3>"+data[i].name+"</h3></li>");
-          }else{
-            paymentList.append("<li class='unpaid'><h3>"+data[i].name+"</h3></li>");
-          }
-          $("#status-updater > #people").append("<option value='"+attendee.name+"'>"+attendee.name+"</option>");
-        };
-        pctPaid = Math.ceil(((totalPaid / totalAtendees) * 100));
-
-        $("#graph-img").addClass("p"+pctPaid);
-        $("#graph-pct").text(pctPaid + "%");
-        $("#amtDue").text(amtDueText + Math.floor((totalDue - (totalDue * (pctPaid / 100)))));
+        return false;
     });
 
   });
@@ -70,18 +79,29 @@
       <div class="container">
         <div id="attendees" class="col-md-6">
           <h1>Attendee list & payment status</h1>
-          <ol id="attendee-list"></ol>
-            <form action="/update-user" method="get">
+          <ol id="attendee-list">
+              {% for key, user in users.iteritems() %}
+                <li class="{{user.status}}">
+                    <h3>{{user.name}}</h3>
+                </li>
+              {% endfor %}
+          </ol>
+            <form action="/update-user/" method="POST" id="updater">
             <div id="status-updater">
-                <input type="text" id="add-person" name="addPerson" placeholder="add a new person" />
-                <select id="people" name="person"></select>
-                <select id="statuses" name="status">
+                <input class="form-control" type="text" id="new-person" name="newPerson" placeholder="add a new person" />
+                <select class="form-control" id="people" name="personId">
+                    <option selected="selected" value="">--New--</option>
+                    {% for key, user in users.iteritems() %}
+                        <option value="{{user.id}}">{{user.name}}</option>
+                    {% endfor %}
+                </select>
+                <select class="form-control" id="statuses" name="status">
                     <option value="deposit">Deposit only</option>
                     <option value="paid">Paid</option>
                     <option value="unpaid">Unpaid</option>
                 </select>
             </div>
-            <input type="submit"></input>
+            <input type="submit" />
             </form>
         </div>
 
