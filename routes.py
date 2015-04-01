@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = 'rdfest'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'X2yUWvxGB3gsygodFmxXFKnjt'
 app.config['MYSQL_DATABASE_DB'] = 'rdfest'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = 'mysql.codeandbrews.com'
 mysql.init_app(app)
 
 conn = mysql.connect()
