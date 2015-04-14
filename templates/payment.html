@@ -40,10 +40,11 @@ $.fn.serializeFormJSON = function() {
 })(jQuery);
 
   $(document).ready(function(){
-    $("#updater").submit(function(){
+    $("#updater").submit(function(e){
+        $("#overlay-wrapper").fadeIn();
         var url = $(this).attr('action'),
             json = $(this).serializeFormJSON();
-        console.log(json);
+        console.log(json.personId);
 
         $.ajax({
             type: "POST",
@@ -53,6 +54,16 @@ $.fn.serializeFormJSON = function() {
             data: JSON.stringify(json),
             success: function(data){
                 console.log("success");
+                $("#attendee-list #user-" + json.personId).attr('class', json.status);
+                $("#overlay-wrapper").delay(750).fadeOut(function(){
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                });
+
+            },
+            error: function(data){
+                console.log("error");
+                $("#overlay-message").text("something went wrong...");
+                $("#overlay-wrapper").delay(1750).fadeOut();
             }
         });
 
@@ -81,7 +92,7 @@ $.fn.serializeFormJSON = function() {
           <h1>Attendee list & payment status</h1>
           <ol id="attendee-list">
               {% for key, user in users.iteritems() %}
-                <li class="{{user.status}}">
+                <li class="{{user.status}}" id="user-{{user.id}}">
                     <h3>{{user.name}}</h3>
                 </li>
               {% endfor %}
@@ -120,5 +131,10 @@ $.fn.serializeFormJSON = function() {
         </div>
       </div>
   </div>
+<div id="overlay-wrapper">
+    <div id="overlay-content-box">
+        <h1 id="overlay-message">loading...</h1>
+    </div>
+</div>
 </body>
 </html>

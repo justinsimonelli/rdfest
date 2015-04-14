@@ -1,5 +1,5 @@
 # routes.py
-from flask import Flask, render_template, request, jsonify, abort
+from flask import Flask, render_template, request, jsonify, abort, make_response
 from flaskext.mysql import MySQL
 import time
 
@@ -46,7 +46,7 @@ def update_user():
         cursor.execute(q, args)
         conn.commit()
 
-    return "ok"
+    return make_response(jsonify({'status': 'good'}), 200)
 
 
 
