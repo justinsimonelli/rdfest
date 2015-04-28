@@ -28,6 +28,14 @@ def payment():
 
     return render_template("payment.html", users=users)
 
+@app.route("/payment/all/")
+def paymentAll():
+    users = user_query("select * from payments")
+    if users is None:
+        users = {}
+
+    return make_response(jsonify(users), 200)
+
 @app.route("/update-user/", methods=['POST'])
 def update_user():
     data = request.json
